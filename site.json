@@ -1,0 +1,10 @@
+{
+  "description": "Interactive web-based game hosted on GitHub offering engaging gameplay for users seeking fun and entertainment online.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

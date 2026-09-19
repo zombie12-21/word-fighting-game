@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Source Sans 3', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #07080f;
+  color: #dde1f5;
+  font-family: 'Source Sans 3', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1, h2, h3, .font-display { font-family: 'Cinzel', serif; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #0a0c18; }
+::-webkit-scrollbar-thumb { background: #252a50; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a4080; }
+
+/* ── Quality colours ── */
+.q-normal    { color: #9ca3af; }
+.q-magic     { color: #4ade80; }
+.q-rare      { color: #60a5fa; }
+.q-epic      { color: #c084fc; }
+.q-legendary { color: #fb923c; }
+.q-divine    { color: #f87171; }
+
+/* ── Quality borders ── */
+.qb-normal    { border-color: #9ca3af44 !important; }
+.qb-magic     { border-color: #4ade8044 !important; }
+.qb-rare      { border-color: #60a5fa44 !important; }
+.qb-epic      { border-color: #c084fc44 !important; }
+.qb-legendary { border-color: #fb923c55 !important; }
+.qb-divine    { border-color: #f8717155 !important; }
+
+/* ── Quality backgrounds ── */
+.qbg-normal    { background: linear-gradient(135deg, #1a1e3a, #0d0f1e); }
+.qbg-magic     { background: linear-gradient(135deg, #0d2218, #0d0f1e); }
+.qbg-rare      { background: linear-gradient(135deg, #0a1a2e, #0d0f1e); }
+.qbg-epic      { background: linear-gradient(135deg, #1a0d2e, #0d0f1e); }
+.qbg-legendary { background: linear-gradient(135deg, #2e1a0a, #0d0f1e); }
+.qbg-divine    { background: linear-gradient(135deg, #2e0a0a, #0d0f1e); }
+
+/* ── Grade colours ── */
+.grade-1 { color: #9ca3af; }
+.grade-2 { color: #60a5fa; }
+.grade-3 { color: #c084fc; }
+.grade-4 { color: #f87171; }
+
+/* ── Animations ── */
+@keyframes float-y   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes glow-beat { 0%,100%{opacity:1} 50%{opacity:0.55} }
+@keyframes shimmer   { 0%{background-position:-200% center} 100%{background-position:200% center} }
+@keyframes fadeIn    { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes popIn     { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
+@keyframes hit       { 0%,100%{filter:brightness(1)} 50%{filter:brightness(2) saturate(2)} }
+@keyframes shake     { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-5px)} 60%{transform:translateX(5px)} }
+
+.animate-float   { animation: float-y 3s ease-in-out infinite; }
+.animate-glow    { animation: glow-beat 2s ease-in-out infinite; }
+.animate-fadein  { animation: fadeIn 0.3s ease forwards; }
+.animate-popin   { animation: popIn 0.25s ease forwards; }
+.animate-hit     { animation: hit 0.25s ease; }
+.animate-shake   { animation: shake 0.3s ease; }
+
+.shimmer-gold {
+  background: linear-gradient(90deg, #c9901e, #f0c040, #c9901e, #a07015, #c9901e);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+.shimmer-spirit {
+  background: linear-gradient(90deg, #b06ef3, #d8a0ff, #b06ef3, #8040c0, #b06ef3);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ── Components ── */
+.card  { background: #0d0f1e; border: 1px solid #1a1e3a; border-radius: 10px; }
+.card2 { background: #121428; border: 1px solid #1a1e3a; border-radius: 8px; }
+
+.btn-gold {
+  background: linear-gradient(135deg, #8a6510, #c9901e);
+  color: #fff8e0; font-family: 'Cinzel', serif; font-weight: 600;
+  border: 1px solid #c9901e; border-radius: 6px; padding: 8px 18px;
+  transition: all 0.15s;
+}
+.btn-gold:hover:not(:disabled) { background: linear-gradient(135deg, #a07818, #e0a828); }
+.btn-gold:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-spirit {
+  background: linear-gradient(135deg, #5a28a0, #a060e8);
+  color: #f0e8ff; font-family: 'Cinzel', serif; font-weight: 600;
+  border: 1px solid #a060e8; border-radius: 6px; padding: 8px 18px;
+  transition: all 0.15s;
+}
+.btn-spirit:hover:not(:disabled) { background: linear-gradient(135deg, #6a38b0, #b878f0); }
+.btn-spirit:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-diamond {
+  background: linear-gradient(135deg, #0e4878, #1a80d0);
+  color: #e8f4ff; font-family: 'Cinzel', serif; font-weight: 600;
+  border: 1px solid #38bdf8; border-radius: 6px; padding: 8px 18px;
+  transition: all 0.15s;
+}
+.btn-diamond:hover:not(:disabled) { background: linear-gradient(135deg, #1858a0, #2090e8); }
+.btn-diamond:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-red {
+  background: linear-gradient(135deg, #7a1010, #d03030);
+  color: #ffe8e8; font-family: 'Cinzel', serif; font-weight: 600;
+  border: 1px solid #d03030; border-radius: 6px; padding: 8px 18px;
+  transition: all 0.15s;
+}
+.btn-red:hover:not(:disabled) { background: linear-gradient(135deg, #981818, #e84040); }
+
+.btn-ghost {
+  background: transparent; color: #8090b0;
+  border: 1px solid #1a1e3a; border-radius: 6px; padding: 8px 16px;
+  transition: all 0.15s;
+}
+.btn-ghost:hover { border-color: #252a50; color: #dde1f5; background: #0d0f1e; }
+
+input, select {
+  background: #0a0c18; border: 1px solid #1a1e3a; color: #dde1f5;
+  padding: 8px 12px; border-radius: 6px; outline: none; transition: border-color 0.2s;
+  font-family: 'Source Sans 3', sans-serif;
+}
+input:focus, select:focus { border-color: #c9901e; }
+
+button { cursor: pointer; }
+button:active:not(:disabled) { transform: scale(0.97); }
+
+.section-title {
+  font-family: 'Cinzel', serif; font-size: 1rem; color: #c9901e;
+  letter-spacing: 0.05em; padding-bottom: 8px;
+  border-bottom: 1px solid #1a1e3a; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── HP / EXP bars ── */
+.hp-bar { height: 10px; border-radius: 5px; background: #1a1e3a; overflow: hidden; }
+.hp-fill { height: 100%; border-radius: 5px; transition: width 0.35s; }
+.hp-fill.high { background: linear-gradient(90deg,#16a34a,#4ade80); }
+.hp-fill.mid  { background: linear-gradient(90deg,#d97706,#fbbf24); }
+.hp-fill.low  { background: linear-gradient(90deg,#991b1b,#ef4444); }
+.exp-bar { height: 6px; border-radius: 3px; background: #1a1e3a; overflow: hidden; }
+.exp-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg,#4f46e5,#818cf8); transition: width 0.5s; }
+.mp-bar { height: 8px; border-radius: 4px; background: #1a1e3a; overflow: hidden; }
+.mp-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg,#1e40af,#60a5fa); transition: width 0.35s; }
+
+/* ── Nav ── */
+.nav-item { border-left: 3px solid transparent; color: #6878a0; transition: all 0.18s; }
+.nav-item:hover { background: #0d0f1e; color: #c0cae8; border-left-color: #252a50; }
+.nav-item.active { background: linear-gradient(90deg,#141830,#0d0f1e); color: #c9901e; border-left-color: #c9901e; }
+
+/* ── Battle log ── */
+.log-player { color: #60a5fa; }
+.log-enemy  { color: #f87171; }
+.log-sys    { color: #94a3b8; font-style: italic; }
+.log-reward { color: #f0c040; font-weight: 600; }
+.log-crit   { color: #fb923c; font-weight: 700; }
+.log-heal   { color: #4ade80; }
+
+/* ── Toast ── */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  padding: 12px 20px; border-radius: 8px;
+  font-family: 'Source Sans 3', sans-serif; font-weight: 600;
+  z-index: 9999; animation: fadeIn 0.3s ease, glow-beat 3s ease 0.3s 1;
+  max-width: 360px;
+}
+.toast-ok   { background: #0a2015; border: 1px solid #16a34a; color: #4ade80; }
+.toast-err  { background: #200a0a; border: 1px solid #991b1b; color: #f87171; }
+.toast-info { background: #0a0e25; border: 1px solid #1e40af; color: #93c5fd; }
+.toast-rare { background: #200a30; border: 1px solid #7c3aed; color: #d8b4fe; }
+
+/* ── Equipment slot ── */
+.equip-slot {
+  width: 60px; height: 60px; border-radius: 8px;
+  background: #0d0f1e; border: 1px dashed #252a50;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; cursor: pointer; transition: all 0.18s;
+  position: relative;
+}
+.equip-slot:hover { border-color: #c9901e; background: #141830; }
+.equip-slot.filled { border-style: solid; }
+
+/* ── Rune socket ── */
+.rune-socket {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #0a0c18; border: 1px dashed #252a50;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; cursor: pointer; transition: all 0.18s;
+}
+.rune-socket:hover { border-color: #b06ef3; background: #180d30; }
+.rune-socket.filled { border-style: solid; border-color: #b06ef3; }
+
+/* ── Item card ── */
+.item-card {
+  border: 1px solid #1a1e3a; border-radius: 8px;
+  padding: 10px; cursor: pointer; transition: all 0.18s;
+  position: relative;
+}
+.item-card:hover { border-color: #252a50; background: #0d0f1e; transform: translateY(-1px); }
+.item-card.selected { border-color: #c9901e !important; background: #141820; }
+
+/* ── Gacha result card ── */
+.gacha-card {
+  border-radius: 10px; padding: 14px; text-align: center;
+  border: 1px solid; animation: popIn 0.3s ease forwards;
+}
+
+/* ── Dungeon card ── */
+.dungeon-card {
+  border: 1px solid #1a1e3a; border-radius: 10px; padding: 14px;
+  cursor: pointer; transition: all 0.18s; background: #0d0f1e;
+}
+.dungeon-card:hover:not(.locked) { border-color: #c9901e; background: #101220; }
+.dungeon-card.locked { opacity: 0.5; cursor: not-allowed; }
+.dungeon-card.special { border-color: #c9901e44; background: linear-gradient(135deg,#180e05,#0d0f1e); }
+
+/* ── Sign-in day ── */
+.signin-day {
+  border-radius: 8px; padding: 10px; text-align: center;
+  border: 1px solid #1a1e3a; background: #0d0f1e; transition: all 0.18s;
+}
+.signin-day.claimed { background: #0a1808; border-color: #16a34a44; }
+.signin-day.today { border-color: #c9901e; background: linear-gradient(135deg,#18100a,#0d0f1e); }
+.signin-day.future { opacity: 0.5; }
