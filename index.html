@@ -2,9 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Fighting Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 50px;
+        }
+        .game-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover { background-color: #0056b3; }
+        .stats { font-size: 18px; margin: 20px 0; }
+    </style>
 </head>
 <body>
-    <h1>word-fighting-game</h1>
+
+    <div class="game-container">
+        <h1>Word Fighting Game</h1>
+        <p>Attack enemies by typing or clicking fight!</p>
+        
+        <div class="stats">
+            Level: <span id="level">1</span> | Score: <span id="score">0</span>
+        </div>
+
+        <button onclick="fightEnemy()">Fight!</button>
+        <button onclick="resetGame()" style="background-color: #dc3545;">Reset Game</button>
+    </div>
+
+    <script>
+        // --- THE FIX FOR SAVING ---
+        // This loads your saved progress when the page opens. If no save exists, start at Level 1, Score 0.
+        let gameState = JSON.parse(localStorage.getItem('wordFightingGameSave')) || {
+            level: 1,
+            score: 0
+        };
+
+        // Update the screen with loaded data
+        function updateScreen() {
+            document.getElementById('level').innerText = gameState.level;
+            document.getElementById('score').innerText = gameState.score;
+        }
+
+        // Action function
+        function fightEnemy() {
+            gameState.score += 10;
+            if (gameState.score % 50 === 0) {
+                gameState.level += 1;
+                alert("Level Up! You are now Level " + gameState.level);
+            }
+            
+            saveGame();
+            updateScreen();
+        }
+
+        // This saves the data directly into the user's browser
+        function saveGame() {
+            localStorage.setItem('wordFightingGameSave', JSON.stringify(gameState));
+        }
+
+        // Clear the save data
+        function resetGame() {
+            if(confirm("Are you sure you want to reset your score?")) {
+                gameState = { level: 1, score: 0 };
+                saveGame();
+                updateScreen();
+            }
+        }
+
+        // Run this when the page first loads
+        updateScreen();
+    </script>
+
 </body>
 </html>
