@@ -1,6 +1,6 @@
 # word-fighting-game
 
-A React + Vite game project built with TypeScript and styled with Tailwind CSS. It is primarily a TypeScript codebase, with supporting CSS and small amounts of HTML, JavaScript, and Shell.
+This repository is a React + Vite game project built with TypeScript and styled using Tailwind CSS. The app is a small browser-based word-fighting game, with the UI and game logic centered around the React app in `src/`.
 
 Language composition:
 - TypeScript: 91.9%
@@ -11,24 +11,27 @@ Language composition:
 
 ## Development
 
-A Vite dev server is already running on the app’s `$PORT` (default: 8443). You do not need to start it manually.
+A Vite dev server is already running on the app’s `$PORT` (default: 8443). Do not start a second dev server manually unless explicitly required.
 
 - Preview: available through the app preview panel
-- Live updates: changes are reflected immediately in the running app
+- Hot reload: enabled for source edits
+- Local dev workflow: use the running Vite environment and edit files directly
 
 ## Project structure
 
-This is the canonical structure for the project:
+This is the canonical structure of the repository:
 
-- `src/main.tsx` — application entry point; imports `src/index.css` and mounts the app into `#root`
-- `src/App.tsx` — main UI component and the usual starting point for app-level changes
-- `src/index.css` — global stylesheet entry; includes Tailwind CSS v4
-- `index.html` — Vite shell that contains the root element and loads `src/main.tsx`
-- `package.json` — scripts, dependencies, and project metadata
-- `vite.config.ts` — Vite configuration, React setup, Tailwind v4 integration, and path aliases
-- `.mise.toml` — Node.js and pnpm toolchain versions
+- `src/main.tsx` — React entry point; imports `src/index.css` and mounts the app to `#root`
+- `src/App.tsx` — main application component and the usual starting point for feature work
+- `src/index.css` — global styles entrypoint; includes Tailwind CSS v4
+- `index.html` — HTML shell used by Vite
+- `package.json` — project scripts, dependencies, and metadata
+- `vite.config.ts` — Vite configuration, React integration, Tailwind setup, and path aliases
+- `.mise.toml` — Node.js and pnpm toolchain pinning
+- `public/` — static assets if present
+- `src/components/` — reusable UI and gameplay pieces if added over time
 
-## Stack
+## Tech stack
 
 - React 19
 - React DOM 19
@@ -38,18 +41,43 @@ This is the canonical structure for the project:
 - `@vitejs/plugin-react`
 - `oxfmt` for formatting
 
-## Styling
+## Styling rules
 
-This project uses Tailwind CSS v4 via the `@tailwindcss/vite` plugin configured in `vite.config.ts`. Global styles should be placed in `src/index.css`, and the Tailwind import should remain at the top of that file.
+This project uses Tailwind CSS v4 via the `@tailwindcss/vite` plugin configured in `vite.config.ts`.
 
-Recommended pattern:
-1. Keep `@import 'tailwindcss';` first
-2. Add any `@font-face` rules next
-3. Then add app-level custom CSS and defaults
+When adding or editing styles:
+- keep the Tailwind import in `src/index.css` at the top
+- place global styles in `src/index.css`
+- keep component-specific styling in the relevant component or local CSS file when appropriate
+- prefer utility classes for layout and design consistency
+- avoid introducing conflicting global CSS unless required
+
+Recommended order in `src/index.css`:
+1. `@import 'tailwindcss';`
+2. any `@font-face` declarations
+3. app-level root styles and default font definitions
+4. custom layout/global rules
 
 ## Working conventions
 
-- Prefer making the smallest relevant change to the feature or component being edited
-- Start from `src/App.tsx` or the closest relevant component before exploring elsewhere
-- Only inspect additional files when necessary to understand imports, styling, or data flow
-- Keep the app consistent with the existing Vite + React + Tailwind structure
+- Start by inspecting the most relevant file in `src/` before exploring the rest of the project
+- Prefer minimal, targeted changes over broad refactors
+- Keep the app structure aligned with the existing Vite + React + Tailwind conventions
+- If a bug or feature touches multiple UI pieces, trace the relevant component boundaries before editing
+- When a change affects gameplay behavior, verify the interaction flow in the app rather than only editing the display layer
+- Avoid unnecessary dependencies or architectural changes unless clearly required
+
+## Typical workflow
+
+- Read the relevant app component first
+- Check imports and related state flow
+- Make the smallest change needed
+- Verify it works in the running preview
+- Keep formatting consistent with the project setup
+
+## Notes for AI agents
+
+- The repository is small and frontend-focused; most work will happen in `src/App.tsx` and related component files
+- Figma Make conventions may influence the structure, but the project still behaves like a standard Vite React app
+- Treat `src/index.css` as the main styling entry and keep global CSS rules minimal
+- Use existing patterns in the app before introducing new abstractions or frameworks
