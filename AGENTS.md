@@ -1,35 +1,55 @@
-# figma-make-app
+# word-fighting-game
 
-React + Vite + Tailwind CSS project running inside Figma Make.
+A React + Vite game project built with TypeScript and styled with Tailwind CSS. It is primarily a TypeScript codebase, with supporting CSS and small amounts of HTML, JavaScript, and Shell.
 
-## Development Server
+Language composition:
+- TypeScript: 91.9%
+- CSS: 5.1%
+- HTML: 1.4%
+- JavaScript: 1.3%
+- Shell: 0.3%
 
-A Vite development server is **already running** on `$PORT` (default 8443). You don't need to start it manually.
+## Development
 
-- Preview URL: The user can access the running app through the preview panel
-- Hot reload: Changes to source files are reflected immediately
+A Vite dev server is already running on the app’s `$PORT` (default: 8443). You do not need to start it manually.
 
-## Project Structure
+- Preview: available through the app preview panel
+- Live updates: changes are reflected immediately in the running app
 
-This is the canonical project structure. Start with task-relevant files below. Only follow imports or inspect other files when required, when a documented path is missing, or when the repository contradicts this guide.
+## Project structure
 
-- `src/main.tsx` - React entrypoint; imports `src/index.css` and mounts `src/App.tsx` into the `#root` element
-- `src/App.tsx` - Primary application component and the usual starting point for UI work
-- `src/index.css` - Global CSS entrypoint and Tailwind CSS v4 import
-- `index.html` - Vite HTML shell containing the `#root` element and loading `src/main.tsx`
-- `package.json` - Project dependencies and the Vite build, development, preview, and formatting scripts
-- `vite.config.ts` - Vite configuration with React, Tailwind CSS v4, and Figma Make plugins plus the `@` alias for `src`
-- `.mise.toml` - Toolchain versions for Node.js and pnpm
+This is the canonical structure for the project:
 
-## Dependencies
+- `src/main.tsx` — application entry point; imports `src/index.css` and mounts the app into `#root`
+- `src/App.tsx` — main UI component and the usual starting point for app-level changes
+- `src/index.css` — global stylesheet entry; includes Tailwind CSS v4
+- `index.html` — Vite shell that contains the root element and loads `src/main.tsx`
+- `package.json` — scripts, dependencies, and project metadata
+- `vite.config.ts` — Vite configuration, React setup, Tailwind v4 integration, and path aliases
+- `.mise.toml` — Node.js and pnpm toolchain versions
 
-- Runtime: React 19 and React DOM 19
-- Styling: Tailwind CSS v4 with the `@tailwindcss/vite` plugin
-- Build tooling: Vite 8, TypeScript 5.7, and `@vitejs/plugin-react`
-- Formatting: oxfmt
+## Stack
+
+- React 19
+- React DOM 19
+- TypeScript 5.7
+- Vite 8
+- Tailwind CSS v4
+- `@vitejs/plugin-react`
+- `oxfmt` for formatting
 
 ## Styling
 
-This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin configured in `vite.config.ts`. `src/index.css` imports Tailwind with `@import 'tailwindcss';`. Use Tailwind utility classes directly in JSX and put global CSS or Tailwind v4 theme customization in `src/index.css`. This scaffold does not need a Tailwind config file or PostCSS config.
+This project uses Tailwind CSS v4 via the `@tailwindcss/vite` plugin configured in `vite.config.ts`. Global styles should be placed in `src/index.css`, and the Tailwind import should remain at the top of that file.
 
-`src/main.tsx` imports `src/index.css`, so global font wiring belongs in `src/index.css`. Keep CSS `@import` statements first, then add any `@font-face` rules and font-family defaults there.
+Recommended pattern:
+1. Keep `@import 'tailwindcss';` first
+2. Add any `@font-face` rules next
+3. Then add app-level custom CSS and defaults
+
+## Working conventions
+
+- Prefer making the smallest relevant change to the feature or component being edited
+- Start from `src/App.tsx` or the closest relevant component before exploring elsewhere
+- Only inspect additional files when necessary to understand imports, styling, or data flow
+- Keep the app consistent with the existing Vite + React + Tailwind structure
